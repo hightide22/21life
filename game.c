@@ -12,8 +12,8 @@ int read_speed(int * speed); // скорость обновления кадро
 void init(); //Все команды для запуска ncurses
 void mark_for_death(int plane[HEIGHT][WIDTH]); // Пометить все поля, которые умрут числом 2
 void mark_for_resurrection(int plane[HEIGHT][WIDTH]); // Пометить все поля, которые будут жить числом 3
-void death(int plane[HEIGHT][WIDTH]); |// заменить 2 на 0 
-void resurrection(int plane[HEIGHT][WIDTH]); //заменить 3 на 1
+void death(int plane[HEIGHT][WIDTH]); |// заменить 3 на 0 
+void resurrection(int plane[HEIGHT][WIDTH]); //заменить 2 на 1
 int count_neighbours(int y, int x, int plane[HEIGHT][WIDTH]); //  The board is assumed to be self-contained. Поэтому вычет по модулю 80
 
 
