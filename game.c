@@ -15,8 +15,7 @@ void mark_for_resurrection(int plane[HEIGHT][WIDTH]); // Пометить все
 void death(int plane[HEIGHT][WIDTH]); |// заменить 2 на 0 
 void resurrection(int plane[HEIGHT][WIDTH]); //заменить 3 на 1
 int count_neighbours(int y, int x, int plane[HEIGHT][WIDTH]); //  The board is assumed to be self-contained. Поэтому вычет по модулю 80
-// у 0 и 2 (%2 == 0) мёртвые
-// у 1 и 3 (%2 == 1) живые
+
 
 
 
@@ -63,8 +62,8 @@ void mark_for_death(int plane[HEIGHT][WIDTH]){
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {
             cnt = count_neighbours(i, j, plane)
-            if (cnt < 2 || cnt > 3) {
-                plane[i][j] = 2;
+            if ((cnt < 2 || cnt > 3) && (plane[i][j] == 1)) {
+                plane[i][j] = 3;
             }
         }
     }
@@ -73,7 +72,7 @@ void mark_for_death(int plane[HEIGHT][WIDTH]){
 void death(int plane[HEIGHT][WIDTH]) {
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {
-            if (plane[i][j] == 2) {
+            if (plane[i][j] == 3) {
                 plane[i][j] = 0;
             }
         }
@@ -91,11 +90,10 @@ void init() {
 
 
 void draw(int plane[HEIGHT][WIDTH]) {
-    printw("Score: %d : %d\n\n\n", l_score, r_score);
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {
             if (plane[i][j]%2) {
-                printw("#");
+                printw("ඞ");
             } else {
                 printw(" ");
             }
