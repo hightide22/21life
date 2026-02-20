@@ -24,13 +24,13 @@ int count_neighbours(int y, int x, int plane[HEIGHT][WIDTH]); //  The board is a
 void the_game() {
     int plane[HEIGHT][WIDTH];
     fill_zero(plane);
-    init();
     int speed;
     int flag = 1;
     if (read_file(plane) || read_speed(speed)){
         printf("n/a");
         flag = 0;
     }
+    init();
     while (flag)
     {
         draw();
